@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<!--I've converted dashboard to where you can post contents and see other people's contents-->
+<!--Contents will only show up if the user is logged in-->
+<!--I've started the like system, but it's not fully implemented. You can only like something from the backend "admin side" as for right now-->
+<h1>Dashboard</h1>
+   {% if request.user.is_authenticated %}
+    <div class="text_wrapper">
+        <p>What's on your mind?</p>
+        <p><a href="{% url 'post-create' %}"><button class="cool_effect">Post something</button></a></p>
+    </div>
+        {% for post in posts %}
+        <div class="box">
+            <img class="profile-img" src="{{ post.user.profile.image.url }}">
+            <p>{{ post.user }}</p>
+            <a href="{% url 'post-detail' post.id %}"><img class="post" src="{{ post.image.url }}"></a>
+            <p>{{ post.caption }}</p>
+            <p>{{ post.created }}</p>
+            <p>likes {{ post.user_like.count }}</p>
+        </div>
+    <!--okay okay I know...this is a silly way to generate space between each post. Don't judge me xD-->
+        <p> <br> <br> <br> </p>
+        {% endfor %}
+    {% else %}
+        <p>Log in to see the contents on this website</p>
+    {% endif %}
+
+{% endblock %}

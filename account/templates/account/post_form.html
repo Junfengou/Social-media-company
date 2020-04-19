@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<!--The page is for user posting image and captions-->
+    <h1>Post</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>Image {{form.image}}</p>
+            <p>Caption {{form.caption}}</p>
+            <p><button input type="submit" name="Create User">Post</button></p>
+
+            {{ form.errors }}
+        </form>
+{% endblock %}

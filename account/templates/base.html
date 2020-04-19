@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <!--Javascript for button functions -->
+  <script type="text/javascript" src="{% static 'javascript/function.js'%}"></script>
+  <link href="{% static 'css/base.css' %}" rel="stylesheet">
+  <!--Font awesome link to use cool fonts-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+</head>
+<body>
+  <div id="header">
+    <!--Logo that move you back to dash board-->
+    <a href="{% url 'dashboard' %}"><img class="logo" src="{% static 'image/logo.png' %}" alt="logo" ></a>
+    {% if request.user.is_authenticated %}
+    <ul class="menu">
+
+      <li><a href="{% url 'dashboard' %}">My dashboard</a></li>
+      <li><a href="{% url 'profile' %}">My Profile</a></li>
+      </li>
+      <li {% if section == "people" %}class="selected"{% endif %}>
+      <a href="#">People</a>
+      </li>
+    </ul>
+    {% endif %}
+
+    <span class="user">
+    {% if request.user.is_authenticated %}
+      <i class="fas fa-ghost" onclick="toggleSideBar()"></i>
+      <p></p>
+      <a href="{% url 'logout' %}">Logout</a>
+      {% else %}
+      <a href="{% url 'login' %}">Log-in</a>
+      {% endif %}
+  </span>
+
+
+  </div>
+   {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">
+          {{ message|safe }}
+            <a href="#" class="close">x</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+    <!--Click on ghost icon to open the side bar, don't know if I'm going to use this section for buddy system or just fast access to profile -->
+    <div id="sidebar">
+      <img class="profile_pic_sidebar" src="{{ user.profile.image.url }}">
+      <div class="profile_info">
+        <p>Username:  {{ user.username }} <br>
+          Email: {{ user.email }}<br> First name: {{ user.first_name }}
+            <br> Last name: {{ user.last_name }}
+            <br> Bio: {{ p_form.my_story.value }}</p>
+    </div>
+
+  </div>
+  <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+</html>

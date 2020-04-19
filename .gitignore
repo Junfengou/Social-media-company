@@ -1,0 +1,12 @@
+*.pyc
+*~
+/.vscode
+__pycache__
+myvenv
+venv
+db.sqlite3
+/static
+.DS_Store
+/.idea
+/.vs
+/bookmarks/settings_local.py

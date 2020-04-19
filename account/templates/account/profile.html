@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<!--This is the profile page as you can probably already tell-->
+   <h1>Profile page</h1>
+        <img class="profile_pic" src="{{ user.profile.image.url }}">
+
+    <!--This part just display all the information about current user-->
+    <div class="profile_info">
+        <p>Username:  {{ user.username }} <br>
+        Email: {{ user.email }}<br> First name: {{ user.first_name }}
+            <br> Last name: {{ user.last_name }}
+            <br> Bio: {{ p_form.my_story.value }}</p>
+    </div>
+
+        <!--This section is hooked up with a basic javascript onClick functions-->
+        <!--Basically allow user to change their account info. The form is hidden behind the button-->
+        <div class="profile_edit">
+        <p class="wrapper">
+        <p><button class="cool_effect" onclick="hideThisFunc()">Edit info</button></p>
+            <p><a href="{% url 'password_change' %}" ><button class="cool_effect" >Update Password</button></a></p>
+
+                <div id="hidden" style="display: none;">
+                    <form method="POST" enctype="multipart/form-data">
+                        <p>Change your info</p>
+                        <p>-----------------------</p>
+                        {% csrf_token %}
+                        <table class="profile_edit_table">
+                            {% csrf_token %}
+                            <tr>
+                                <td>username</td>
+                                <td>{{u_form.username}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>First name</td>
+                                <td>{{u_form.first_name}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Last name</td>
+                                <td>{{u_form.last_name}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Image</td>
+                                <td>{{p_form.image}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Bio</td>
+                                <td>{{p_form.my_story}}</td>
+                            </tr>
+                        </table>
+
+                        <p><button input type="submit" name="Create User">update</button></p>
+                        {{ form.errors }}
+                    </form>
+                </div>
+            </div>
+{% endblock %}
