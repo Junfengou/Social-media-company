@@ -8,7 +8,7 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <h3>Do you really want to delete this post? There is no going back! {{ object.caption }}</h3>
-            <p><button input type="submit" name="Create User">Yes! Delete it!</button></p>
-            <p><button><a href="{% url 'post-detail' object.id %}">I changed my mind...</a></button></p>
+            <p><button input type="submit" name="Create User" class="cool_effect">Yes! Delete it!</button></p>
+            <p><button class="cool_effect"><a href="{% url 'post-detail' object.id %}" >I changed my mind...</a></button></p>
         </form>
 {% endblock %}
