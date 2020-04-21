@@ -17,7 +17,7 @@
             <p><img class="profile_pic" src="{{ post.user.profile.image.url }}">{{ post.user }}</p>
             <a href="{% url 'post-detail' post.id %}"><img class="post" src="{{ post.image.url }}"></a>
             <h4>{{ post.caption }}</h4>
-            <h3><i class="far fa-thumbs-up fa-sm">{{ post.user_like.count }}</i></h3>
+            <h3><i class="far fa-thumbs-up fa-sm"></i>{{ post.user_like.count }}</h3>
             <h6>{{ post.created }}</h6>
 
         </div>

@@ -4,30 +4,32 @@
 
 {% block content %}
 <!--Register page, little different than the last one but same concept-->
+<div class="box">
   <h1>Register page</h1>
    <form method="POST" action="">
             {% csrf_token %}
-            <p>{{form.username.label}}<br>
-            {{form.username}} </p>
+            <h5>{{form.username.label}} <br>
+                 {{form.username}}<br> </h5>
 
-            <p>{{form.email.label}}<br>
-            {{form.email}} </p>
+            <h5>{{form.email.label}} <br>
+            {{form.email}} <br></h5>
 
-            <p>{{form.password1.label}}<br>
-            {{form.password1}} </p>
+            <h5>{{form.password1.label}}<br>
+            {{form.password1}} <br></h5>
 
-            <p>{{form.password2.label}}<br>
-            {{form.password2}} </p>
+            <h5>{{form.password2.label}}<br>
+            {{form.password2}} <br></h5>
 
-            <p>{{form.first_name.label}}<br>
-            {{form.first_name}} </p>
+            <h5>{{form.first_name.label}}<br>
+            {{form.first_name}} <br></h5>
 
-            <p>{{form.last_name.label}}<br>
-            {{form.last_name}} </p>
+            <h5>{{form.last_name.label}}<br>
+            {{form.last_name}} <br></h5>
 
             <p><button input type="submit" name="Create User" class="cool_effect">Submit</button></p>
 
             {{ form.errors }}
         </form>
+</div>
 {% endblock %}
 

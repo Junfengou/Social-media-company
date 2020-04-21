@@ -5,17 +5,18 @@
 {% block content %}
 <!--Log in page didn't really change much, added 2 extra buttons that's it-->
 <!--Password reset and sign up for account has been revamped. Look at models for more info-->
-  <h1>Login page</h1>
-        <p>Welcome back! Go ahead and enter your info to sign in!</p>
+    <div class="box">
+        <h1>Log in</h1>
         <form action="." method="post">
             {{ form.as_p }}
             {% csrf_token %}
-            <p><button type="submit" value="login" class="cool_effect">Login</button></p>
+            <button type="submit" value="login" class="cool_effect">Login</button>
         </form>
         {% for message in messages %}
             <p>{{ message }}</p>
         {% endfor %}
- <p>Forgot your password? <a class="resetpassword" href="{% url 'reset_password' %}"><button class="cool_effect">Recover password</button></a></p>
-    <p>Sign up for a account! <a class="login" href="{% url 'register' %}"><button class="cool_effect">Sign up for a account</button></a></p>
-
+        <br>
+        <h5><a class="resetpassword" href="{% url 'reset_password' %}"><button class="cool_effect">Recover password</button></a></h5>
+        <h5><a class="login" href="{% url 'register' %}"><button class="cool_effect">Sign up for a account</button></a></h5>
+    </div>
 {% endblock %}
