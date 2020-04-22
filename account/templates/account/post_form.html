@@ -4,6 +4,7 @@
 
 {% block content %}
 <!--The page is for user posting image and captions-->
+<div class="box">
     <h1>Post</h1>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -13,4 +14,5 @@
 
             {{ form.errors }}
         </form>
+</div>
 {% endblock %}

@@ -10,9 +10,10 @@
                 <p>{{ object.user }}</p>
             </div>
             <p><img class="post" src="{{ post.image.url }}"></p>
-            <p>{{ object.caption }}</p>
-            <p>{{ object.created }}</p>
-            <p><a href="{% url 'post-update' pk=post.id %}"><button class="cool_effect">Update post</button></a></p>
-            <p><a href="{% url 'post-delete' pk=post.id %}"><button class="cool_effect">Delete post</button></a></p>
+            <h4>{{ post.caption }}</h4>
+            <h3><i class="far fa-thumbs-up fa-sm"></i>{{ post.user_like.count }}</h3>
+            <h6>{{ post.created }}</h6>
+            <h5><a href="{% url 'post-update' pk=post.id %}"><button class="cool_effect">Update post</button></a>
+                <a href="{% url 'post-delete' pk=post.id %}"><button class="cool_effect">Delete post</button></a></h5>
         </div>
 {% endblock %}
